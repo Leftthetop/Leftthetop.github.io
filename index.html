@@ -95,66 +95,8 @@
       
         <p>Get a skill for build a MacOS in your Windows computer by VMware</p>
 <p>你好!</p>
-<h1 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a><a target="_blank" rel="noopener" href="https://xujiadong2001.github.io/2021/12/04/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a></h1><h3 id="1-GitHub创建个人仓库"><a href="#1-GitHub创建个人仓库" class="headerlink" title="1.GitHub创建个人仓库"></a>1.GitHub创建个人仓库</h3><p>登录到GitHub,如果没有GitHub帐号，使用你的邮箱注册GitHub帐号：<a href="https://link.zhihu.com/?target=https://github.com/">Build software better, together</a> 点击GitHub中的New repository创建新仓库，仓库名应该为：<strong>用户名</strong>.github.io，这个<strong>用户名</strong>使用你的GitHub帐号名称代替，这是固定写法。（由于我已经创建过了，所以提示错误）</p>
-<p><a target="_blank" rel="noopener" href="http://qyk685.bvimg.com/13887/157b1c3fb2d48e24.png"><img src="http://qyk685.bvimg.com/13887/157b1c3fb2d48e24.png" alt="img"></a></p>
-<h3 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h3><p>什么是Git ?简单来说Git是开源的分布式版本控制系统，用于敏捷高效地处理项目。我们网站在本地搭建好了，需要使用Git同步到GitHub上。从Git官网下载：<a href="https://link.zhihu.com/?target=https://git-scm.com/download/win">Git - Downloading Package</a> 选择64位的安装包，下载后安装。安装成功后，将你的Git与GitHub帐号绑定，打开Git Bash。设置user.name和user.email配置信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<p>生成ssh密钥文件（复制粘贴然后一直回车下去即可，用默认）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<p>刚才生成密钥后会给出一个生成目录（一般是用户/.ssh），在目录找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制（笔记本打开，ctrl+A然后ctrl+c）。</p>
-<p><a target="_blank" rel="noopener" href="http://qyk685.bvimg.com/13887/ea5a52785d94116e.png"><img src="http://qyk685.bvimg.com/13887/ea5a52785d94116e.png" alt="img"></a></p>
-<p>打开<a href="https://link.zhihu.com/?target=https://github.com/settings/keys">GitHub_Settings_keys</a> 页面，新建SSH Key。Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@github.com </span><br></pre></td></tr></table></figure>
-
-<p>此处可能提示访问未受信任，输入yes即可。</p>
-<p><a target="_blank" rel="noopener" href="http://qyk685.bvimg.com/13887/aec124b6240f8ab7.png"><img src="http://qyk685.bvimg.com/13887/aec124b6240f8ab7.png" alt="img"></a></p>
-<p>这样就是成功了：</p>
-<p><a target="_blank" rel="noopener" href="http://qyk685.bvimg.com/13887/d536861bf51dfce9.png"><img src="http://qyk685.bvimg.com/13887/d536861bf51dfce9.png" alt="img"></a></p>
-<p>设置GitHub密钥的作用是让github确认推送者为合法用户。</p>
-<h3 id="3-安装Node-js"><a href="#3-安装Node-js" class="headerlink" title="3.安装Node.js"></a>3.安装Node.js</h3><p>Hexo基于Node.js，Node.js下载地址：<a href="https://link.zhihu.com/?target=https://nodejs.org/en/download/">Download | Node.js</a> 下载安装包，注意安装Node.js会包含环境变量及npm的安装，安装后，检测Node.js是否安装成功，打开cmd（win+R，输入cmd）在命令行中输入 node -v 。检测npm是否安装成功，在命令行中输入npm -v 。都返回版本号即为成功。安装Hexo的环境已经全部搭建完成。</p>
-<h3 id="4-安装Hexo"><a href="#4-安装Hexo" class="headerlink" title="4.安装Hexo"></a>4.安装Hexo</h3><p>Hexo就是我们的个人博客网站的框架， 这里需要自己在电脑常里创建一个文件夹，可以命名为Blog，Hexo框架与以后你自己发布的网页都在这个文件夹中。在cmd中，cd进入你的文件夹。比如我的文件夹地址为C:\Program Files\blog，就输入cd C:\Program Files\blog。但注意，如果当前位置在其他磁盘不能直接cd。例如，当前地址是C:\Users\xujiadong：</p>
-<p><a target="_blank" rel="noopener" href="http://qyk685.bvimg.com/13887/5583e9236f19895b.png"><img src="http://qyk685.bvimg.com/13887/5583e9236f19895b.png" alt="img"></a></p>
-<p>目标文件夹在D盘（如D:\Program Files\blog），要先输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d:</span><br></pre></td></tr></table></figure>
-
-<p>切换到了D盘根目录，再输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd D:\Program Files\blog</span><br></pre></td></tr></table></figure>
-
-<p>如果成功，命令符左侧应为你的文件夹。</p>
-<p>在cmd中使用npm命令安装Hexo，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli </span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，初始化我们的博客，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<p>为了检测我们的网站雏形，分别按顺序输入以下三条命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>意思是依次是新建一篇博客文章、生成网页、在本地预览。</p>
-<p>此时打开浏览器输入地址：localhost:4000，可以看到第一篇博客，称为”test_my_site“。</p>
-<h3 id="5-推送网站"><a href="#5-推送网站" class="headerlink" title="5.推送网站"></a>5.推送网站</h3><p>上面只是在本地预览，接下来要做的就是就是推送网站，也就是发布网站，让我们的网站可以被更多的人访问。在blog根目录里的_config.yml文件称为站点配置文件。</p>
-<p>下一步将我们的Hexo与GitHub关联起来，打开站点的配置文件_config.yml，翻到最后，找到deploy修改为：</p>
-<p>deploy:<br>type: git<br>repo: 这里改成你之前在GitHub上创建仓库的完整路径，记得加上.git<br>branch: master</p>
-<p>如下：</p>
-<p><a target="_blank" rel="noopener" href="http://qyk685.bvimg.com/13887/d448813a043b3b97.png"><img src="http://qyk685.bvimg.com/13887/d448813a043b3b97.png" alt="img"></a></p>
-<p><strong>注意：冒号后有空格！</strong></p>
-<p>保存站点配置文件。</p>
-<p>其实就是给hexo d 这个命令做相应的配置，让hexo知道你要把blog部署在哪个位置，我们部署在我们GitHub的仓库里。最后安装Git部署插件，输入命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>然后分别输入三条命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>其实第三条的 hexo d 就是部署网站命令，d是deploy的缩写。完成后，打开浏览器，在地址栏输入你的放置个人网站的仓库路径，即：用户名.github.io</p>
-<p>你就会发现你的博客已经上线了，可以在网络上被访问了。</p>
-<h3 id="6-发布文章"><a href="#6-发布文章" class="headerlink" title="6.发布文章"></a>6.发布文章</h3><p>在命令行中输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;博客名字&quot;</span><br></pre></td></tr></table></figure>
-
-<p>我们会发现在blog根目录下的source文件夹中的_post文件夹中多了一个 <strong>博客名字.md</strong> 文件，使用Markdown编辑器打开，就可以写博客了。</p>
-<p>可以通过命令 hexo s –debug 在本地浏览器的localhost:4000 预览博文效果。写好博文并且样式无误后，通过hexo g、hexo d 生成、部署网页。随后可以在浏览器中浏览。</p>
-<h3 id="7-网站设置"><a href="#7-网站设置" class="headerlink" title="7.网站设置"></a>7.网站设置</h3><p>可以在站点配置文件_config.yml修改基本的站点信息，如网站标题、副标题、网站描述、作者、网站头像外部链接、网站语言、时区等。安装主题的话将主题下载后，放到themes文件夹中，在站点配置文件config.yml，修改主题为你的主题名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">inline int read()</span><br><span class="line">&#123;</span><br><span class="line">	int op=1,a=0;</span><br><span class="line">	chat re=getchar();</span><br><span class="line">	for(;c&gt;&#x27;9&#x27;||c&lt;&#x27;0&#x27;;re=getchar())if(c==&#x27;-&#x27;)op=-1;</span><br><span class="line">	for(;c&gt;=&#x27;0&#x27;&amp;&amp;c&lt;=&#x27;9&#x27;;re=getchar())a=((a&lt;&lt;3)+(a&lt;&lt;1))+c-&#x27;0&#x27;;</span><br><span class="line">	return op*a;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a;</span><br><span class="line">	a=read();</span><br><span class="line">	cout&lt;&lt;x&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个就是快读的基本实现方法<br>有点问题</p>
 
       
     </div>
